@@ -52,7 +52,7 @@ No-Vary-Search: key-order, except=("param1")
 
 - `except` {{optional_inline}}
   - : An inner list of space-separated strings (`except=("param1" "param2")`).
-    Indicates that URLs that differ only by the listed parameters _will_ be cached as separate entries. All other parameters that are not in the `except=` list _won't_  cause URLs to be cached as separate entries. The `except` directive must not be provided at the same time as the `params` attribute.
+    Indicates that URLs that differ only by the listed parameters _will_ be cached as separate entries. All other parameters that are not in the `except=` list _won't_ cause URLs to be cached as separate entries. The `except` directive must not be provided at the same time as the `params` attribute.
 
 ## Description
 
