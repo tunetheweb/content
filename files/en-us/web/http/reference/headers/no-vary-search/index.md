@@ -31,6 +31,7 @@ This allows the browser to reuse existing resources despite mismatching URL para
 No-Vary-Search: key-order
 No-Vary-Search: params=("param1" "param2")
 No-Vary-Search: except=("param1" "param2")
+No-Vary-Search: except=()
 No-Vary-Search: key-order, except=("param1")
 ```
 
@@ -47,13 +48,11 @@ No-Vary-Search: key-order, except=("param1")
     > [!WARNING]
     > A previous version of `No-Vary-Search` had params as a boolean or a list of strings, meaning you had to specify it when wanting to apply to all params (or example, `No-Vary-Search: params` or `No-Vary-Search: params, except=("param1" "param2")`, or `No-Vary-Search: key-order, params, except=("param1")`).
     >
-    > This has been simplified to just a list of strings, so the empty `params` parameter is no longer required (though could be specified as `No-Vary-Search: params=()` if really desired). Check browser support below.
+    > This has been simplified to just a list of strings, so the boolean `params` directive is no longer supported and is assumed to include all params when an `except` directive is used.
 
 - `except` {{optional_inline}}
   - : An inner list of space-separated strings (`except=("param1" "param2")`).
-    Indicates that URLs that differ only by the listed parameters _will_ be cached as separate entries.
-    A boolean `params` directive has to be included for it to take effect (`params, except=("param1" "param2")`).
-    The presence of other parameters that are not in the `except=` list _won't_ cause URLs to be cached as separate entries.
+    Indicates that URLs that differ only by the listed parameters _will_ be cached as separate entries. All other parameters that are not in the `except=` list _won't_  cause URLs to be cached as separate entries. The `except` directive must not be provided at the same time as the `params` attribute.
 
 ## Description
 
@@ -121,10 +120,10 @@ No-Vary-Search: params=("id" "order" "lang")
 > [!NOTE]
 > As a [structured field](https://www.rfc-editor.org/rfc/rfc8941), the parameters should be space-separated, quoted strings — as shown above — and not comma-separated, which developers may be more used to.
 
-If you wanted the browser to ignore all of them _and_ any others that might be present when cache matching, you could use the boolean form of `params`:
+If you wanted the browser to ignore all of them _and_ any others that might be present when cache matching, you would use an empty `except` list to indicate this.
 
 ```http
-No-Vary-Search: params
+No-Vary-Search: except=()
 ```
 
 ### Specifying params that _do_ cause cache matching misses
@@ -134,7 +133,7 @@ Say the app behaved differently, with `/users` pointing to the main user directo
 This can be achieved like so:
 
 ```http
-No-Vary-Search: params, except=("id")
+No-Vary-Search: except=("id")
 ```
 
 ## Specifications
