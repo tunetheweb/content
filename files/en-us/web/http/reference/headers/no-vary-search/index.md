@@ -29,10 +29,9 @@ This allows the browser to reuse existing resources despite mismatching URL para
 
 ```http
 No-Vary-Search: key-order
-No-Vary-Search: params
 No-Vary-Search: params=("param1" "param2")
-No-Vary-Search: params, except=("param1" "param2")
-No-Vary-Search: key-order, params, except=("param1")
+No-Vary-Search: except=("param1" "param2")
+No-Vary-Search: key-order, except=("param1")
 ```
 
 ## Directives
@@ -41,11 +40,15 @@ No-Vary-Search: key-order, params, except=("param1")
   - : Indicates that URLs will not be cached as separate entries if _the order_ in which parameters appear in the URL is the only difference.
     The presence of other parameters _will_ cause URLs to be cached separately.
 - `params` {{optional_inline}}
-  - : Either a boolean or a list of strings:
-    - As a boolean (`params`), it indicates that URLs that differ only by their parameters will not be cached as separate entries.
-    - An inner list of space-separated strings (`params=("param1" "param2")`).
-      Indicates that URLs that differ only by the listed parameters will not be cached as separate entries.
-      The presence of other parameters _will_ cause them to be cached separately.
+  - : An inner list of space-separated strings (`params=("param1" "param2")`).
+    Indicates that URLs that differ only by the listed parameters will not be cached as separate entries.
+    The presence of other parameters _will_ cause them to be cached separately.
+
+    > [!WARNING]
+    > A previous version of `No-Vary-Search` had params as a boolean or a list of strings, meaning you had to specify it when wanting to apply to all params (or example, `No-Vary-Search: params` or `No-Vary-Search: params, except=("param1" "param2")`, or `No-Vary-Search: key-order, params, except=("param1")`).
+    >
+    > This has been simplified to just a list of strings, so the empty `params` parameter is no longer required (though could be specified as `No-Vary-Search: params=()` if really desired). Check browser support below.
+
 - `except` {{optional_inline}}
   - : An inner list of space-separated strings (`except=("param1" "param2")`).
     Indicates that URLs that differ only by the listed parameters _will_ be cached as separate entries.
