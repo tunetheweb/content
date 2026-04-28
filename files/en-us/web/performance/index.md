@@ -90,7 +90,7 @@ The following pages provide overviews of the Performance APIs including informat
 - [Long animation frame timing](/en-US/docs/Web/API/Performance_API/Long_animation_frame_timing)
   - : **Long animation frames** (LoAFs) can impact the user experience of a website.
     They can cause slow user interface (UI) updates, resulting in seemingly unresponsive controls and [janky](/en-US/docs/Glossary/Jank) (or non-smooth) animated effects and scrolling, leading to user frustration.
-    The [Long Animation Frames API](https://w3c.github.io/long-animation-frames/) allows developers to get information about the long animation frames and better understand their root causes. This article shows how to use the Long Animation Frames API.
+    The [Long Animation Frames API](https://www.w3.org/TR/long-animation-frames/) allows developers to get information about the long animation frames and better understand their root causes. This article shows how to use the Long Animation Frames API.
 - [Monitoring bfcache blocking reasons](/en-US/docs/Web/API/Performance_API/Monitoring_bfcache_blocking_reasons)
   - : The {{domxref("PerformanceNavigationTiming.notRestoredReasons")}} property reports information on why the current document was blocked from using the {{Glossary("bfcache")}} on navigation.
     Developers can use this information to identify pages that need updates to make them bfcache-compatible, thereby improving site performance.

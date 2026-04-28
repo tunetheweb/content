@@ -6,7 +6,7 @@ page-type: guide
 
 {{DefaultAPISidebar("Performance API")}}
 
-**Long animation frames** (LoAFs) can impact the user experience of a website. They can cause slow user interface (UI) updates, resulting in seemingly unresponsive controls and [janky](/en-US/docs/Glossary/Jank) (or non-smooth) animated effects and scrolling, leading to user frustration. The [Long Animation Frames API](https://w3c.github.io/long-animation-frames/) allows developers to get information about the long animation frames and better understand their root causes. This article shows how to use the Long Animation Frames API.
+**Long animation frames** (LoAFs) can impact the user experience of a website. They can cause slow user interface (UI) updates, resulting in seemingly unresponsive controls and [janky](/en-US/docs/Glossary/Jank) (or non-smooth) animated effects and scrolling, leading to user frustration. The [Long Animation Frames API](https://www.w3.org/TR/long-animation-frames/) allows developers to get information about the long animation frames and better understand their root causes. This article shows how to use the Long Animation Frames API.
 
 ## What is a long animation frame?
 
